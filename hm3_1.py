@@ -14,12 +14,9 @@ t_span = (0, 60)
 t_eval = np.linspace(t_span[0], t_span[1], 1000)
 
 def pendulum_ode(t, y, w0, x0, l, g):
-    # y[0] is phi, y[1] is d(phi)/dt
     phi = y[0]
     dphi_dt = y[1]
     
-    # The linearized equation of motion (small angle approx)
-    # d^2(phi)/dt^2 = (x0 * w0^2 / l) * cos(w0 * t) - (g / l) * phi
     d2phi_dt2 = (x0 * w0**2 / l) * np.cos(w0 * t) - (g / l) * phi
     
     return [dphi_dt, d2phi_dt2]
